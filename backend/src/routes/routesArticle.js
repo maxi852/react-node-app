@@ -2,14 +2,14 @@
 
 const express = require('express');
 
-let article = require('../controllers/controllerArticle');
+let Article = require('../controllers/controllerArticle');
 
 let router = express.Router();
 
-router.post('/save', article.save);
+router.post('/save', Article.save);
 
-router.get('/articles', article.getArticles);
+router.get('/articles', Article.getArticles);
 
-router.delete('/delete/:id', article.deleteArticle);
+router.delete('/delete/:id', Article.deleteArticle);
 
 module.exports = router;

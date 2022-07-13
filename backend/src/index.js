@@ -27,7 +27,7 @@ app.use((req, res, next) => {
     next(); 
 })
 
-app.use('./api', articleRoutes)
+app.use('/api', articleRoutes)
 
 mongoose.connect(url, {useNewUrlParser: true})
 .then(() => {

@@ -13,7 +13,7 @@ let articleController = {
         article.content = params.content;
         article.author = params.author;
 
-        Article.save((articleStored, err) => {
+        article.save((err, articleStored) => {
             if(err || !articleStored){
                 return res.status(404).send({
                     status: 'error',
@@ -33,7 +33,7 @@ let articleController = {
     getArticles: (req, res) => {
         let query = Article.find({}) //si dejamos en blanco, recibimos todos
         
-        query.sort('-date').exec((articles, err) => {
+        query.sort('-date').exec((err, articles) => {
             if(err){
                 return res.status(500).send({
                     status: 'error',
@@ -60,7 +60,7 @@ let articleController = {
         let articleId = req.params.id;
         Article.findOneAndDelete({
             _id:articleId
-        }, (articleDelete, err) => {
+        }, (err, articleDelete) => {
             if(err){
                 return res.status(500).send({
                     status: 'error',
